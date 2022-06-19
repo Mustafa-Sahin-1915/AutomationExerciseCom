@@ -48,4 +48,6 @@ public class AutomationExerciseHomePage {
     public WebElement contactUsLink;
     @FindBy(partialLinkText = "Test Cases")
     public WebElement testCasesLink;
+
+
 }
