@@ -15,6 +15,9 @@ public class AutomationExerciseHomePage {
     @FindBy(xpath = "//a[@href='/products']")
     public WebElement productsLink;
 
+    @FindBy(xpath = "//a[@href='/view_cart']")
+    public WebElement cartLink;
+
     @FindBy(xpath="//h2[@class='title text-center'] ")
     public WebElement allProductsHeader;
 
@@ -49,5 +52,17 @@ public class AutomationExerciseHomePage {
     @FindBy(partialLinkText = "Test Cases")
     public WebElement testCasesLink;
 
+    @FindBy(css = "div.single-widget h2")
+    public WebElement subscribeH2;
+    @FindBy(id="susbscribe_email")
+    public WebElement subscribeEmail;
+    @FindBy(id="subscribe")
+    public WebElement subscribeSubmitBtn;
+
+    @FindBy(xpath = "//*[contains(text(),'You have been successfully subscribed')]")
+    public WebElement subscribeSuccessfulMsg;
+
+    @FindBy(xpath = "//a[@href='/product_details/1']")
+    public WebElement firstProductsViewProductLink;
 
 }

@@ -27,5 +27,13 @@ public class AutomationExerciseProductDetailsPage {
     @FindBy(xpath = "(//div[@class='product-information']/p)[4]")
     public WebElement productBrand;
 
+    @FindBy(id="quantity")
+    public WebElement productQuantity;
+
+    @FindBy(xpath = "//button[@class='btn btn-default cart']")
+    public WebElement productAddToCartBtn;
+
+    @FindBy(xpath = "//a[@href='/view_cart']")
+    public WebElement viewCartLink;
 
 }

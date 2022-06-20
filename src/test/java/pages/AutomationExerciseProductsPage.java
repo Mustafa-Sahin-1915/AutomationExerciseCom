@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -21,4 +22,35 @@ public class AutomationExerciseProductsPage {
 
     @FindBy(xpath = "//a[@href='/product_details/1']")
     public WebElement firstProductsViewProductLink;
+
+    @FindBy(id = "search_product")
+    public WebElement searchProductBox;
+    @FindBy(id="submit_search")
+    public WebElement submitSearchBtn;
+
+    @FindBy(css = "button.btn.btn-success.close-modal.btn-block")
+    public WebElement continueShoppingBtn;
+
+    @FindBy(xpath = "(//a[@href='/view_cart'])[2]")
+    public WebElement viewCartModalBtn;
+
+    @FindBy(xpath = "(//div[@class='product-overlay']//i)[1]")
+    public WebElement firstProductAddToCartOverlay;
+
+    @FindBy(xpath = "(//div[@class='product-overlay']//i)[2]")
+    public WebElement secondProductAddToCartOverlay;
+
+    public WebElement getFirstProduct(){
+        if (allProducts.size()>0) {
+           return allProducts.get(0);
+        }
+        return null;
+    }
+    public WebElement getSecondProduct(){
+        if (allProducts.size()>0) {
+            return allProducts.get(1);
+        }
+        return null;
+    }
+
 }

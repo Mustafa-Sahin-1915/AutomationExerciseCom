@@ -331,5 +331,8 @@ public class Driver {
     public static void scrollIntoView(WebElement element){
         executeJScommand(element,"arguments[0].scrollIntoView(true);");
     }
-
+    public static void setValueByJS(WebElement element, String value){
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].value='"+value+"';", element);
+    }
 }
