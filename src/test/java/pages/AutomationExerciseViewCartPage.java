@@ -23,4 +23,10 @@ public class AutomationExerciseViewCartPage {
     @FindBy(xpath = "//td[contains(text(),'Item')]")
     public WebElement itemHeaderTr;
 
+    @FindBy(xpath = "//a[@href='/login']")
+    public WebElement registerLoginBtn;
+
+    @FindBy(xpath = "//div[@class='modal-footer']/button")
+    public WebElement continueOnCartBtn;
+
 }

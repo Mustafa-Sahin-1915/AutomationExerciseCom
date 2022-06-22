@@ -65,4 +65,8 @@ public class AutomationExerciseHomePage {
     @FindBy(xpath = "//a[@href='/product_details/1']")
     public WebElement firstProductsViewProductLink;
 
+    @FindBy(xpath = "(//a[@class='btn btn-default add-to-cart'])")
+    public List<WebElement> addToCartBtns;
+
+
 }
