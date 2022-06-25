@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         features = {"./src/test/resources/features"},//path of features folder
         glue={"stepdefinitions","hooks"}, //path of the step definitions folder
         dryRun = false,
-        tags = "@test_case_18",
+        tags = "@test_case_20",
         monochrome = true,
         plugin = {
                 "pretty", //prints gherkin step on the console

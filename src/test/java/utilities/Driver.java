@@ -36,28 +36,9 @@ public class Driver {
     public static WebDriver getDriver() {
         //create the driver if and only if it is null
         if (driver == null) {
-            String browser = ConfigReader.getProperty("browser");
-            if ("chrome".equals(browser)) {
-                WebDriverManager.chromedriver().setup();
-                //DesiredCapabilities dc = new DesiredCapabilities();
-                //dc.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR,UnexpectedAlertBehaviour.IGNORE);
-                driver = new ChromeDriver();
-            } else if ("firefox".equals(browser)) {
-                WebDriverManager.firefoxdriver().setup();
-                driver = new FirefoxDriver();
-            } else if ("ie".equals(browser)) {
-                WebDriverManager.iedriver().setup();
-                driver = new InternetExplorerDriver();
-            } else if ("edge".equals(browser)) {
-                WebDriverManager.edgedriver().setup();
-                driver = new InternetExplorerDriver();
-            } else if ("safari".equals(browser)) {
-                WebDriverManager.getInstance(SafariDriver.class).setup();
-                driver = new SafariDriver();
-            } else if ("chrome-headless".equals(browser)) {
-                WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver(new ChromeOptions().setHeadless(true));
-            }
+            driver = DriverFactory.getDriverInstance();
+            //driver = DriverFactory.getDriverInstance(ConfigReader.getProperty("browser"));
+            //this is same with previous line
         }
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();

@@ -40,6 +40,14 @@ public class AutomationExerciseProductsPage extends AutomationExerciseBasePage{
     @FindBy(xpath = "(//div[@class='product-overlay']//i)[2]")
     public WebElement secondProductAddToCartOverlay;
 
+
+    @FindBy(xpath = "//div[@class='brands_products']/h2")
+    public WebElement brandProductsH2;
+
+    @FindBy(xpath = "//div[@class='brands_products']//a")
+    public List<WebElement> brandsAlinks;
+
+
     public WebElement getFirstProduct(){
         if (allProducts.size()>0) {
            return allProducts.get(0);
@@ -53,4 +61,14 @@ public class AutomationExerciseProductsPage extends AutomationExerciseBasePage{
         return null;
     }
 
+    public WebElement getBrandByVisibleName(String brandName){
+        String justText = null;
+        for(WebElement w:brandsAlinks){
+            justText = w.getText().replaceAll("[^a-zA-Z]", "");
+            if (w.isDisplayed() && justText.equalsIgnoreCase(brandName)){
+                return w;
+            }
+        }
+        return null;
+    }
 }

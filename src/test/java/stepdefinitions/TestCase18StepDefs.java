@@ -13,6 +13,10 @@ import utilities.ReusableMethods;
 public class TestCase18StepDefs {
     AutomationExerciseHomePage homePage;
     AutomationExerciseCategoryProductsPage categoryProductsPage;
+    /*
+    Given user launches browser
+    And navigate to url
+     */
     @Then("verify that categories are visible on left side bar")
     public void verify_that_categories_are_visible_on_left_side_bar() {
         homePage = (AutomationExerciseHomePage) AutomationExercisePageFactory.
@@ -76,8 +80,5 @@ public class TestCase18StepDefs {
                 getPage(AutomationExercisePagesEnum.CategoryProductsPage);
         String categoryProductH2Str = categoryProductsPage.categoryProductH2.getText().toUpperCase();
         Assert.assertTrue(categoryProductH2Str.contains(subCategory.toUpperCase()));
-
-
-
-    }
+   }
 }

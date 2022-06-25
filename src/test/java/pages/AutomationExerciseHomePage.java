@@ -86,13 +86,28 @@ public class AutomationExerciseHomePage extends AutomationExerciseBasePage{
     @FindBy(xpath = "//div[@class='left-sidebar']/h2")
     public WebElement leftSideBarCategoryH2;
 
+    @FindBy(xpath = "//div[@class='brands_products']/h2")
+    public WebElement brandProductsH2;
+
+    @FindBy(xpath = "//div[@class='brands_products']//a")
+    public List<WebElement> brandsAlinks;
+
     public WebElement getCategoryByVisibleName(String categoryName){
         for(WebElement w:accordionAlinks){
             if (w.isDisplayed() && w.getText().equalsIgnoreCase(categoryName)){
                 return w;
             }
         }
-        return accordionAlinks.get(0);
+        return null;
     }
-
+    public WebElement getBrandByVisibleName(String brandName){
+        String justText = null;
+        for(WebElement w:brandsAlinks){
+            justText = w.getText().replaceAll("[^a-zA-Z]", "");
+            if (w.isDisplayed() && justText.equalsIgnoreCase(brandName)){
+                return w;
+            }
+        }
+        return null;
+    }
 }

@@ -15,7 +15,6 @@ public class TestCase8StepDefs {
 
     @When("click on Products button")
     public void click_on_products_button() {
-        driver = Driver.getDriver();
         homePage = (AutomationExerciseHomePage) AutomationExercisePageFactory.
                 getPage(AutomationExercisePagesEnum.HomePage);
         homePage.productsLink.click();
