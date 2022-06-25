@@ -20,6 +20,9 @@ public class AutomationExerciseViewCartPage extends AutomationExerciseBasePage{
     @FindBy(xpath = "//a[@class='btn btn-default check_out']")
     public WebElement proceedToCheckoutBtn;
 
+    @FindBy(xpath = "//table[@id='cart_info_table']/tbody/tr/td[2]")
+    public List<WebElement> productsInCartDescriptions;
+
     @FindBy(xpath = "//td[contains(text(),'Item')]")
     public WebElement itemHeaderTr;
 

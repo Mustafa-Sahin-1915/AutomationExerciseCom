@@ -116,6 +116,7 @@
                         <include>**/*Runner.java</include>
                     </includes>
                     <testFailureIgnore>true</testFailureIgnore>
+                   <!--
                     <parallel>classes</parallel>
                     <forkMode>perthread</forkMode>
                     <threadCount>2</threadCount>
@@ -124,9 +125,11 @@
                     <argLine>-Xmx1024m</argLine>
                     <argLine>-XX:MaxPermSize=256m</argLine>
                     <argLine>-Dfile.encoding=UTF-8</argLine>
+                    -->
                     <useFile>false</useFile>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>net.masterthought</groupId>
                 <artifactId>maven-cucumber-reporting</artifactId>

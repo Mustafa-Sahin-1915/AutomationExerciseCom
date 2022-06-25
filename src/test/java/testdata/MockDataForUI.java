@@ -1,10 +1,13 @@
 package testdata;
 
 import com.github.javafaker.Faker;
+import org.openqa.selenium.WebElement;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class MockDataForUI {
     private String title;
@@ -40,7 +43,10 @@ public class MockDataForUI {
     private String expiryMonth;
     private String expiryYear;
 
+    private String searchProductName;
+
     private static MockDataForUI mockDataForUI = new MockDataForUI();
+
 
     public MockDataForUI() {
         faker = new Faker();
@@ -71,7 +77,12 @@ public class MockDataForUI {
         cvc="123";
         expiryMonth="11";
         expiryYear="2001";
+        searchProductName = "T-Shirt";
 
+    }
+
+    public String getSearchProductName() {
+        return searchProductName;
     }
 
     public String getNameOnCard() {
@@ -140,8 +151,10 @@ public class MockDataForUI {
         cvc=faker.finance().bic();
         expiryMonth="11";
         expiryYear="2001";
+        searchProductName = "T-Shirt";
 
     }
+
 
     private void setUpBirthday(Date date) {
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();

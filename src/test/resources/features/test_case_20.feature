@@ -12,7 +12,9 @@ Feature: TC_20:View & Cart Brand Products
     When add all searched products to cart
     Then click cart button on home page
     Then verify that all searched products added into cart
+    And click signup button on home page
     Then enter correct email and password
+    And click login button
     And verify that Logged in as username is visible
     And click cart button on home page
     Then verify that all searched products added into cart after login as well
