@@ -50,8 +50,8 @@ public class MockDataForUI {
         title="Mr.";
         firstName = "AAA";
         lastName = "BBBB";
-        email = "bbb123456@gmail.com";
-        password = "bbb123456";
+        email = "ddeasf123456@gmail.com";
+        password = "bbbc123456";
         dayOfBirth = 1;
         monthOfBirth=1;
         yearOfBirth=2000;

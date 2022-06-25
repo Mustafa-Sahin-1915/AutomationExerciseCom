@@ -31,4 +31,10 @@ public class AutomationExerciseViewCartPage extends AutomationExerciseBasePage{
 
     @FindBy(xpath = "//div[@class='modal-body']//a")
     public WebElement signupLoginOnCartPageLink;
+
+    @FindBy(xpath = "//table[@id='cart_info_table']/tbody/tr/td[last()]/a")
+    public List<WebElement> productDeleteBtns;
+
+    @FindBy(xpath = "//span[@id='empty_cart']/p/b")
+    public WebElement emptyCartMsg;
 }

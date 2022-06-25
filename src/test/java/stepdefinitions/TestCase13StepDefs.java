@@ -6,9 +6,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import pages.AutomationExerciseHomePage;
-import pages.AutomationExerciseProductDetailsPage;
-import pages.AutomationExerciseViewCartPage;
+import pages.*;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
@@ -25,14 +23,17 @@ public class TestCase13StepDefs {
     @Then("click View Product for any product on home page")
     public void click_view_product_for_any_product_on_home_page() {
         driver = Driver.getDriver();
-        homePage = new AutomationExerciseHomePage();
+        homePage = (AutomationExerciseHomePage) AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.HomePage);
         Driver.scrollIntoView(homePage.firstProductsViewProductLink);
         homePage.firstProductsViewProductLink.click();
-        productDetailsPage = new AutomationExerciseProductDetailsPage();
+
     }
 
     @Then("verify product detail is opened")
     public void verify_product_detail_is_opened() {
+        productDetailsPage = (AutomationExerciseProductDetailsPage) AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.ProductDetailsPage);
         String urlOfProductDetailsPage = driver.getCurrentUrl();
         Assert.assertTrue(productDetailsPage.productName.isDisplayed());
         Driver.scrollIntoView(productDetailsPage.productCondition);
@@ -40,6 +41,8 @@ public class TestCase13StepDefs {
 
     @Then("increase quantity to {int}")
     public void increase_quantity_to(Integer inc) {
+        productDetailsPage = (AutomationExerciseProductDetailsPage) AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.ProductDetailsPage);
         String val = productDetailsPage.productQuantity.getAttribute("value");
         String value = String.valueOf(inc);
         productDetailsPage.productQuantity.click();
@@ -50,6 +53,8 @@ public class TestCase13StepDefs {
 
     @Then("click Add to cart button")
     public void click_add_to_cart_button() {
+        productDetailsPage = (AutomationExerciseProductDetailsPage) AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.ProductDetailsPage);
         Driver.scrollIntoView(productDetailsPage.productName);
         productDetailsPage.productAddToCartBtn.click();
         Driver.wait(1);
@@ -57,7 +62,8 @@ public class TestCase13StepDefs {
     @Then("verify that product is displayed in cart page with exact quantity {int}")
     public void verify_that_product_is_displayed_in_cart_page_with_exact_quantity(Integer quantity) {
         Driver.getDriver().navigate().refresh();
-        viewCartPage = new AutomationExerciseViewCartPage();
+        viewCartPage = (AutomationExerciseViewCartPage) AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.ViewCartPage);
         Driver.waitForVisibility(viewCartPage.proceedToCheckoutBtn,5);
         Driver.scrollIntoView(viewCartPage.itemHeaderTr);
         List<WebElement> addedProductsInCart = viewCartPage.addedProductsInCart;

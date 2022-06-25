@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import pages.AutomationExercisePageFactory;
+import pages.AutomationExercisePagesEnum;
 import pages.AutomationExerciseProductsPage;
 import pages.AutomationExerciseViewCartPage;
 import utilities.Driver;
@@ -25,7 +27,8 @@ public class TestCase12StepDefs {
 
     @When("hover over first product and click Add to cart")
     public void hover_over_first_product_and_click_add_to_cart() {
-        productsPage = new AutomationExerciseProductsPage();
+        productsPage = (AutomationExerciseProductsPage) AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.ProductsPage);
         WebElement product = productsPage.getFirstProduct();
         Driver.scrollIntoView(product);
         ReusableMethods.hover(product);
@@ -42,10 +45,14 @@ public class TestCase12StepDefs {
     }
     @When("click Continue Shopping button")
     public void click_continue_shopping_button() {
+        productsPage = (AutomationExerciseProductsPage) AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.ProductsPage);
         productsPage.continueShoppingBtn.click();
     }
     @When("Hover over second product and click Add to cart")
     public void hover_over_second_product_and_click_add_to_cart() {
+        productsPage = (AutomationExerciseProductsPage) AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.ProductsPage);
         WebElement product = productsPage.getSecondProduct();
         Driver.scrollIntoView(product);
         ReusableMethods.hover(product);
@@ -62,18 +69,23 @@ public class TestCase12StepDefs {
     }
     @When("click View Cart button")
     public void click_view_cart_button() {
-        productsPage = new AutomationExerciseProductsPage();
+        productsPage = (AutomationExerciseProductsPage) AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.ProductsPage);
         Driver.waitAndClick(productsPage.viewCartModalBtn,2);
-        viewCartPage = new AutomationExerciseViewCartPage();
+
     }
     @Then("verify both products are added to Cart")
     public void verify_both_products_are_added_to_cart() {
+        viewCartPage = (AutomationExerciseViewCartPage) AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.ViewCartPage);
         Driver.waitForVisibility(viewCartPage.proceedToCheckoutBtn,5);
         Driver.scrollIntoView(viewCartPage.proceedToCheckoutBtn);
         Assert.assertTrue(viewCartPage.addedProductsInCart.size()==2);
     }
     @Then("verify their prices, quantity and total price")
     public void verify_their_prices_quantity_and_total_price() {
+        viewCartPage = (AutomationExerciseViewCartPage) AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.ViewCartPage);
         List<WebElement> addedProductsInCart= viewCartPage.addedProductsInCart;
         WebElement elInCart;
         System.out.println(addedProductsInCart.size());

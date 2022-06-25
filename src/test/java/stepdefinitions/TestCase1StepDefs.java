@@ -20,7 +20,7 @@ public class TestCase1StepDefs {
     AutomationExerciseAccountCreatedPage accountCreatedPage;
 
     AutomationExerciseAccountDeletePage accountDeletePage;
-    MockDataForUI mockDataForUI;
+
     @Given("user launches browser")
     public void user_launches_browser() {
         driver = Driver.getDriver();
@@ -33,43 +33,50 @@ public class TestCase1StepDefs {
     public void verify_that_home_page_is_visible_successfully() {
         String currentUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(ConfigReader.getProperty("automationexercise_url"),currentUrl);
-        homePage = new AutomationExerciseHomePage();
-       // mockDataForUI = MockDataForUI.getInstance();//ready data
-        mockDataForUI = MockDataForUI.getStaticInstance();//ready random data from faker
+        homePage = (AutomationExerciseHomePage) AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.HomePage);
+
     }
     @When("click on signup_login button")
     public void click_on_signup_login_button() {
-       if (homePage==null) homePage = new AutomationExerciseHomePage();
+       AutomationExerciseHomePage homePage = (AutomationExerciseHomePage) AutomationExercisePageFactory.
+               getPage(AutomationExercisePagesEnum.HomePage);
        Driver.waitForVisibility(homePage.signupLoginLink, 2);
-        homePage.signupLoginLink.click();
+       homePage.signupLoginLink.click();
     }
     @Then("verify New User Signup is visible")
     public void verify_new_user_signup_is_visible() {
-        loginPage = new AutomationExerciseLoginPage();
+        loginPage = (AutomationExerciseLoginPage)AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.LoginPage);
         Assert.assertTrue(loginPage.newUserSignupH2.isDisplayed());
     }
 
     @When("enter name and email address")
     public void enter_name_and_email_address() {
-
+        loginPage = (AutomationExerciseLoginPage)AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.LoginPage);
         Driver.scrollIntoView(loginPage.signupName);
-
-        loginPage.signupName.sendKeys(mockDataForUI.getFirstName());
-        loginPage.signupEmail.sendKeys(mockDataForUI.getEmail());
+        loginPage.signupName.sendKeys(MockDataForUI.getStaticInstance().getFirstName());
+        loginPage.signupEmail.sendKeys(MockDataForUI.getStaticInstance().getEmail());
     }
     @When("click signup button")
     public void click_signup_button() {
+        loginPage = (AutomationExerciseLoginPage)AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.LoginPage);
         loginPage.signUpBtn.click();
     }
     @Then("verify ENTER ACCOUNT INFORMATION is visible")
     public void verify_enter_account_information_is_visible() {
-        accountInfoPage = new AutomationExerciseEnterAccountInfoPage();
+        accountInfoPage = (AutomationExerciseEnterAccountInfoPage)AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.EnterAccountInfoPage);
         Assert.assertTrue(accountInfoPage.enterAccountInfoH2.isDisplayed());
     }
 
     @When("fill the details, title, name, email, password, date of birth")
     public void fill_the_details_title_name_email_password_date_of_birth() {
-
+        accountInfoPage =  accountInfoPage = (AutomationExerciseEnterAccountInfoPage)AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.EnterAccountInfoPage);
+        MockDataForUI mockDataForUI = MockDataForUI.getStaticInstance();
         Driver.scrollIntoView(accountInfoPage.enterAccountInfoH2);
         accountInfoPage.titleMrRadioBtn.click();
         Assert.assertEquals(accountInfoPage.accountName.getAttribute("value"),mockDataForUI.getFirstName());
@@ -88,13 +95,18 @@ public class TestCase1StepDefs {
     }
     @When("select checkbox sign up for our newsletter")
     public void select_checkbox_sign_up_for_our_newsletter() {
+        accountInfoPage = (AutomationExerciseEnterAccountInfoPage)AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.EnterAccountInfoPage);
         if (!accountInfoPage.signupForNewsletterCheckbox.isSelected()){
             accountInfoPage.signupForNewsletterCheckbox.click();
         }
     }
     @When("fill the details first name, last name, company, address, address2, country, state, city, zipcode, mobile number")
     public void fill_the_details_first_name_last_name_company_address_address2_country_state_city_zipcode_mobile_number() {
+        accountInfoPage = (AutomationExerciseEnterAccountInfoPage)AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.EnterAccountInfoPage);
         Driver.scrollIntoView(accountInfoPage.addressInfoH2);
+        MockDataForUI mockDataForUI = MockDataForUI.getStaticInstance();
         accountInfoPage.firstName.sendKeys(mockDataForUI.getFirstName());
         accountInfoPage.lastName.sendKeys(mockDataForUI.getLastName());
         accountInfoPage.company.sendKeys(mockDataForUI.getCompany());
@@ -110,33 +122,46 @@ public class TestCase1StepDefs {
     }
     @When("click create account button")
     public void click_create_account_button() {
+        accountInfoPage = (AutomationExerciseEnterAccountInfoPage)AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.EnterAccountInfoPage);
         accountInfoPage.createAccountBtn.click();
-        accountCreatedPage = new AutomationExerciseAccountCreatedPage();
     }
     @Then("verify that ACCOUNT CREATED is visible")
     public void verify_that_account_created_is_visible() {
+        accountCreatedPage = (AutomationExerciseAccountCreatedPage)AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.AccountCreatedPage);
         Assert.assertTrue(accountCreatedPage.accountCreatedH2.isDisplayed());
     }
     @When("click Continue button")
     public void click_continue_button() {
+        accountCreatedPage = (AutomationExerciseAccountCreatedPage)AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.AccountCreatedPage);
         accountCreatedPage.continueBtn.click();
     }
     @Then("verify that Logged in as username is visible")
     public void verify_that_logged_in_as_username_is_visible() {
+        homePage = (AutomationExerciseHomePage) AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.HomePage);
         Assert.assertTrue(homePage.loggedInAsTxt.isDisplayed());
     }
 
     @When("click Delete Account button")
     public void click_delete_account_button() {
+        homePage = (AutomationExerciseHomePage) AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.HomePage);
         homePage.deleteAccountBtn.click();
-        accountDeletePage = new AutomationExerciseAccountDeletePage();
+
     }
     @Then("verify that ACCOUNT DELETED is visible")
     public void verify_that_account_deleted_is_visible() {
+        accountDeletePage =(AutomationExerciseAccountDeletePage)AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.AccountDeletePage);
         Assert.assertTrue(accountDeletePage.accountDeleteH2.isDisplayed());
     }
     @Then("click after delete Continue button")
     public void click_after_delete_continue_button() {
+        accountDeletePage =(AutomationExerciseAccountDeletePage)AutomationExercisePageFactory.
+                getPage(AutomationExercisePagesEnum.AccountDeletePage);
         accountDeletePage.continueBtn.click();
     }
 }

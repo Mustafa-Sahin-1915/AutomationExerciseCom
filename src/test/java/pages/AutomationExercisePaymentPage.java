@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
-public class AutomationExercisePaymentPage {
+public class AutomationExercisePaymentPage extends AutomationExerciseBasePage{
 
     public AutomationExercisePaymentPage() {
         PageFactory.initElements(Driver.getDriver(), this);
@@ -32,7 +32,7 @@ public class AutomationExercisePaymentPage {
     @FindBy(id = "submit")
     public WebElement payAndConfirmOrderBtn;
 
-    @FindBy(xpath = "//div[@id='success_message']")
+    @FindBy(xpath = "//div[@class='alert-success alert' and contains(text(),'Your order')]")
     public WebElement successfullyOrderedMessage;
 
 

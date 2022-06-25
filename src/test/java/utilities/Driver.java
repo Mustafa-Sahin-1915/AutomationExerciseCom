@@ -335,4 +335,9 @@ public class Driver {
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("arguments[0].value='"+value+"';", element);
     }
+
+    public static void clickPageDown(){
+        Actions actions = new Actions(driver);
+        actions.sendKeys(Keys.PAGE_DOWN).build().perform();
+    }
 }
