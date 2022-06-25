@@ -8,7 +8,7 @@ import utilities.Driver;
 
 import java.util.List;
 
-public class AutomationExerciseProductsPage {
+public class AutomationExerciseProductsPage extends AutomationExerciseBasePage{
     public AutomationExerciseProductsPage() {
         PageFactory.initElements(Driver.getDriver(),this);
     }

@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = {"./src/test/resources/features"},//path of features folder
         glue={"stepdefinitions","hooks"}, //path of the step definitions folder
-        dryRun = true,
+        dryRun = false,
         tags = "@test_case_14",
         monochrome = true,
         plugin = {

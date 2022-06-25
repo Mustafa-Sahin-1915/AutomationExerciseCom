@@ -35,11 +35,12 @@ public class TestCase1StepDefs {
         Assert.assertEquals(ConfigReader.getProperty("automationexercise_url"),currentUrl);
         homePage = new AutomationExerciseHomePage();
        // mockDataForUI = MockDataForUI.getInstance();//ready data
-        mockDataForUI = new MockDataForUI();//ready random data from faker
+        mockDataForUI = MockDataForUI.getStaticInstance();//ready random data from faker
     }
     @When("click on signup_login button")
     public void click_on_signup_login_button() {
-
+       if (homePage==null) homePage = new AutomationExerciseHomePage();
+       Driver.waitForVisibility(homePage.signupLoginLink, 2);
         homePage.signupLoginLink.click();
     }
     @Then("verify New User Signup is visible")
@@ -102,7 +103,6 @@ public class TestCase1StepDefs {
         accountInfoPage.address2.sendKeys(mockDataForUI.getCompanyAddress2());
         Select country = new Select(accountInfoPage.country);
         country.selectByIndex(mockDataForUI.getCountry());
-        accountInfoPage.address2.sendKeys(mockDataForUI.getCompanyAddress2());
         accountInfoPage.state.sendKeys(mockDataForUI.getState());
         accountInfoPage.city.sendKeys(mockDataForUI.getCity());
         accountInfoPage.zipcode.sendKeys(mockDataForUI.getZipCode());

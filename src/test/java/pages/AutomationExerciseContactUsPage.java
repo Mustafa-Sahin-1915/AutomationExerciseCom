@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
-public class AutomationExerciseContactUsPage {
+public class AutomationExerciseContactUsPage extends AutomationExerciseBasePage{
     public AutomationExerciseContactUsPage() {
         PageFactory.initElements(Driver.getDriver(),this);
 

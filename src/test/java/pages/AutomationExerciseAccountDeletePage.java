@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
-public class AutomationExerciseAccountDeletePage {
+public class AutomationExerciseAccountDeletePage extends AutomationExerciseBasePage{
 
     public AutomationExerciseAccountDeletePage() {
         PageFactory.initElements(Driver.getDriver(),this);

@@ -7,7 +7,7 @@ import utilities.Driver;
 
 import java.util.List;
 
-public class AutomationExerciseViewCartPage {
+public class AutomationExerciseViewCartPage extends AutomationExerciseBasePage{
 
     public AutomationExerciseViewCartPage() {
 
@@ -29,4 +29,6 @@ public class AutomationExerciseViewCartPage {
     @FindBy(xpath = "//div[@class='modal-footer']/button")
     public WebElement continueOnCartBtn;
 
+    @FindBy(xpath = "//div[@class='modal-body']//a")
+    public WebElement signupLoginOnCartPageLink;
 }

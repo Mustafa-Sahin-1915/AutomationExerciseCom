@@ -3,11 +3,9 @@ package stepdefinitions;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import pages.AutomationExerciseCheckOutPage;
-import pages.AutomationExerciseHomePage;
-import pages.AutomationExerciseLoginPage;
-import pages.AutomationExerciseViewCartPage;
+import pages.*;
 import testdata.MockDataForUI;
+import utilities.Driver;
 
 
 import java.util.List;
@@ -16,6 +14,9 @@ public class TestCase14StepDefs {
     AutomationExerciseHomePage homePage;
     AutomationExerciseViewCartPage viewCartPage;
     AutomationExerciseCheckOutPage checkOutPage;
+    AutomationExercisePaymentPage paymentPage;
+
+    MockDataForUI mockData =MockDataForUI.getStaticInstance();
 
     /*
     Given user launches browser
@@ -29,6 +30,10 @@ public class TestCase14StepDefs {
         addToCartBtns.get(0).click();
     }
     //And click cart button
+    @And("click cart button after adding products on home page")
+    public void click_cart_button_after_adding_products_on_home_page() {
+        homePage.modalViewCartLink.click();
+    }
     @Then("verify that cart page is displayed")
     public void verify_that_cart_page_is_displayed() {
        viewCartPage = new AutomationExerciseViewCartPage();
@@ -38,8 +43,14 @@ public class TestCase14StepDefs {
     public void click_to_proceed_to_checkout_on_cart_web_page() {
         viewCartPage.proceedToCheckoutBtn.click();
     }
-/*
-    And click on signup_login button
+
+
+    @When("click on signup_login button on cart web page")
+    public void click_on_signup_login_button_on_cart_web_page() {
+
+        viewCartPage.signupLoginOnCartPageLink.click();
+    }
+   /*
     Then verify New User Signup is visible
     When enter name and email address
     And click signup button
@@ -60,29 +71,40 @@ public class TestCase14StepDefs {
     @Then("verify Address Details and Review Your Order")
     public void verify_address_details_and_review_your_order() {
         checkOutPage = new AutomationExerciseCheckOutPage();
-        Assert.assertEquals(checkOutPage.deliveryAddress1,
-                MockDataForUI.getInstance().getCompanyAddress1());
+        Assert.assertEquals(checkOutPage.deliveryAddress2.getText(),
+                mockData.getCompanyAddress1());
 
     }
     @When("enter description in comment text area and click Place Order")
     public void enter_description_in_comment_text_area_and_click_place_order() {
-
+        Driver.scrollIntoView(checkOutPage.orderMessageTextArea);
+        checkOutPage.orderMessageTextArea.sendKeys(MockDataForUI.getInstance().getCheckoutComment());
+        checkOutPage.placeOrderBtn.click();
     }
     @When("enter payment details:Name on Card, Card Number, CVC, Expiration Date")
     public void enter_payment_details_name_on_card_card_number_cvc_expiration_date() {
-
+        paymentPage = new AutomationExercisePaymentPage();
+        paymentPage.nameOnCardTxt.sendKeys(MockDataForUI.getInstance().getNameOnCard());
+        paymentPage.cardNumberTxt.sendKeys(MockDataForUI.getInstance().getCardNumber());
+        paymentPage.cvcTxt.sendKeys(MockDataForUI.getInstance().getCvc());
+        paymentPage.expiryMonthTxt.sendKeys(MockDataForUI.getInstance().getExpiryMonth());
+        paymentPage.expiryYearTxt.sendKeys(MockDataForUI.getInstance().getExpiryYear());
     }
     @When("click Pay and Confirm Order button")
     public void click_pay_and_confirm_order_button() {
 
+        paymentPage.payAndConfirmOrderBtn.click();
+        Driver.wait(1);
     }
     @Then("verify success message Your order has been placed successfully")
     public void verify_success_message_your_order_has_been_placed_successfully() {
-
+        //Driver.waitForVisibility(paymentPage.successfullyOrderedMessage,5);
+        Driver.scrollIntoView(paymentPage.successfullyOrderedMessage);
+        Assert.assertTrue(paymentPage.successfullyOrderedMessage.isDisplayed());
     }
     /*
-    When click Delete Account button
-    Then verify that ACCOUNT DELETED is visible
-    And click after delete Continue button
-     */
+      When click Delete Account button
+      Then verify that ACCOUNT DELETED is visible
+      And click after delete Continue button
+    */
 }

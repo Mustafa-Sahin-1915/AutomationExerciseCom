@@ -6,10 +6,10 @@ Feature: TC14_Place Order: Register while Checkout
     And navigate to url
     Then verify that home page is visible successfully
     When Add products to cart
-    And click cart button
+    And click cart button after adding products on home page
     Then verify that cart page is displayed
     When click to Proceed to Checkout on cart web page
-    And click on signup_login button
+    And click on signup_login button on cart web page
     Then verify New User Signup is visible
     When enter name and email address
     And click signup button
@@ -21,7 +21,7 @@ Feature: TC14_Place Order: Register while Checkout
     Then verify that ACCOUNT CREATED is visible
     When click Continue button
     Then verify that Logged in as username is visible
-    When click cart button
+    When click cart button on home page
     And  click proceed to checkout button
     Then verify Address Details and Review Your Order
     When enter description in comment text area and click Place Order

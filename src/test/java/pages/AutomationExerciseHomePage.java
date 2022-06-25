@@ -7,7 +7,7 @@ import utilities.Driver;
 
 import java.util.List;
 
-public class AutomationExerciseHomePage {
+public class AutomationExerciseHomePage extends AutomationExerciseBasePage{
     public AutomationExerciseHomePage() {
 
         PageFactory.initElements(Driver.getDriver(),this);
@@ -17,6 +17,9 @@ public class AutomationExerciseHomePage {
 
     @FindBy(xpath = "//a[@href='/view_cart']")
     public WebElement cartLink;
+
+    @FindBy(xpath = "//div[@class='modal-body']//a")
+    public WebElement modalViewCartLink;
 
     @FindBy(xpath="//h2[@class='title text-center'] ")
     public WebElement allProductsHeader;

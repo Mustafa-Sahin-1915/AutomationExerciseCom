@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
-public class AutomationExerciseEnterAccountInfoPage {
+public class AutomationExerciseEnterAccountInfoPage extends AutomationExerciseBasePage{
 
     public AutomationExerciseEnterAccountInfoPage() {
         PageFactory.initElements(Driver.getDriver(),this);

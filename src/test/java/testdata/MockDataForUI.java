@@ -31,6 +31,17 @@ public class MockDataForUI {
 
     private String contactSubject;
     private String contactMessage;
+
+    private String checkoutComment;
+
+    private String nameOnCard;
+    private String cardNumber;
+    private String cvc;
+    private String expiryMonth;
+    private String expiryYear;
+
+    private static MockDataForUI mockDataForUI = new MockDataForUI();
+
     public MockDataForUI() {
         faker = new Faker();
         setUpData();
@@ -39,8 +50,8 @@ public class MockDataForUI {
         title="Mr.";
         firstName = "AAA";
         lastName = "BBBB";
-        email = "aaa1234@gmail.com";
-        password = "aaa1234";
+        email = "bbb123456@gmail.com";
+        password = "bbb123456";
         dayOfBirth = 1;
         monthOfBirth=1;
         yearOfBirth=2000;
@@ -54,10 +65,41 @@ public class MockDataForUI {
         mobilePhone="500-222-22-22";
         contactSubject="About your product";
         contactMessage="I found an error/defact in the product";
+        checkoutComment = "This is my order.";
+        nameOnCard="Test Name On Card";
+        cardNumber="1234123412341234";
+        cvc="123";
+        expiryMonth="11";
+        expiryYear="2001";
+
+    }
+
+    public String getNameOnCard() {
+        return nameOnCard;
+    }
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public String getCvc() {
+        return cvc;
+    }
+
+    public String getExpiryMonth() {
+        return expiryMonth;
+    }
+
+    public String getExpiryYear() {
+        return expiryYear;
     }
 
     public String getContactSubject() {
         return contactSubject;
+    }
+
+    public String getCheckoutComment() {
+        return checkoutComment;
     }
 
     public String getContactMessage() {
@@ -65,9 +107,15 @@ public class MockDataForUI {
     }
 
     public static MockDataForUI getInstance(){
-        MockDataForUI data = new MockDataForUI();
-        data.setAllData();
-        return data;
+        //MockDataForUI data = new MockDataForUI();
+        //data.setAllData();
+        //return data;
+        return mockDataForUI;
+    }
+    public static MockDataForUI getStaticInstance(){
+        mockDataForUI = new MockDataForUI();
+        mockDataForUI.setAllData();
+        return mockDataForUI;
     }
     private void setUpData() {
         title = ((int) (Math.random() * 10) / 2 == 0) ? "Mr." : "Mrs.";
@@ -86,6 +134,12 @@ public class MockDataForUI {
         city = faker.address().city();
         zipCode = faker.address().zipCode();
         mobilePhone = faker.phoneNumber().cellPhone();
+        checkoutComment = faker.aviation().aircraft();
+        nameOnCard= faker.name().firstName();
+        cardNumber=faker.finance().creditCard();
+        cvc=faker.finance().bic();
+        expiryMonth="11";
+        expiryYear="2001";
 
     }
 
