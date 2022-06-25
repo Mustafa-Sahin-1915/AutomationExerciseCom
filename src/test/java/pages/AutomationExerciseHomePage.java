@@ -71,5 +71,28 @@ public class AutomationExerciseHomePage extends AutomationExerciseBasePage{
     @FindBy(xpath = "(//a[@class='btn btn-default add-to-cart'])")
     public List<WebElement> addToCartBtns;
 
+    @FindBy(xpath = "//a[contains(@href,'Women')]")
+    public WebElement womenCategoryLeftSideBar;
+
+    @FindBy(xpath = "//a[contains(@href,'Men')]")
+    public WebElement menCategoryLeftSideBar;
+
+    @FindBy(xpath = "//a[contains(@href,'Kids')]")
+    public WebElement kidsCategoryLeftSideBar;
+
+    @FindBy(xpath ="//div[@id='accordian']//a" )
+    public List<WebElement> accordionAlinks;
+
+    @FindBy(xpath = "//div[@class='left-sidebar']/h2")
+    public WebElement leftSideBarCategoryH2;
+
+    public WebElement getCategoryByVisibleName(String categoryName){
+        for(WebElement w:accordionAlinks){
+            if (w.isDisplayed() && w.getText().equalsIgnoreCase(categoryName)){
+                return w;
+            }
+        }
+        return accordionAlinks.get(0);
+    }
 
 }

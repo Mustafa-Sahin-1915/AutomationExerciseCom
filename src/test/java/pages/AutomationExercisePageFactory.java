@@ -24,6 +24,7 @@ public class AutomationExercisePageFactory {
             case ContactUsSuccessPage:pageV = new AutomationExerciseContactUsSuccessPage();break;
             case EnterAccountInfoPage:pageV=new AutomationExerciseEnterAccountInfoPage();break;
             case SearchedProductsPage:pageV = new AutomationExerciseSearchedProductsPage();break;
+            case CategoryProductsPage:pageV = new AutomationExerciseCategoryProductsPage();break;
             default:pageV = null;
         }
         return pageV;

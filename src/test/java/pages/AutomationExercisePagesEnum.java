@@ -17,8 +17,9 @@ public enum AutomationExercisePagesEnum {
     ProductsPage("ProductsPage"),
     SearchedProductsPage("SearchedProductsPage"),
     TestCasesPage("TestCasesPage"),
-    ViewCartPage("ViewCartPage");
+    ViewCartPage("ViewCartPage"),
 
+    CategoryProductsPage("CategoryProductsPage");
     private String name;
 
     AutomationExercisePagesEnum(String name) {

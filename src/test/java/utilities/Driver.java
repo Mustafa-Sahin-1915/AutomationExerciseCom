@@ -340,4 +340,10 @@ public class Driver {
         Actions actions = new Actions(driver);
         actions.sendKeys(Keys.PAGE_DOWN).build().perform();
     }
+
+    public static void clickByHoverOver(WebElement element){
+        Actions actions = new Actions(getDriver());
+        actions.moveToElement(element)
+                .click().build().perform();
+    }
 }
