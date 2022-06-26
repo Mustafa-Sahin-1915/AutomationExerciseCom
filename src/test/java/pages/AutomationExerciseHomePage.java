@@ -112,6 +112,12 @@ public class AutomationExerciseHomePage extends AutomationExerciseBasePage{
     @FindBy(xpath = "(//div[@id='recommended-item-carousel']//p)[1]")
     public WebElement firstRecommendedItemCode;
 
+    @FindBy(xpath = "//a[@id='scrollUp']")
+    public WebElement scrollUpBtnOnRight;
+
+    @FindBy(xpath = "//div[@id='slider-carousel']//h2")
+    public List<WebElement> sliderCarouselH2s;
+
 
     public WebElement getCategoryByVisibleName(String categoryName){
         for(WebElement w:accordionAlinks){
