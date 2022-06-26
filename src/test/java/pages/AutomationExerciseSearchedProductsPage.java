@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import testdata.ContextDataMap;
 import utilities.Driver;
 
 import java.util.List;
@@ -11,6 +12,11 @@ public class AutomationExerciseSearchedProductsPage extends AutomationExerciseBa
 
     public AutomationExerciseSearchedProductsPage() {
         PageFactory.initElements(Driver.getDriver(),this);
+    }
+
+    public AutomationExerciseSearchedProductsPage(ContextDataMap contextData) {
+        super(contextData);
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
     @FindBy(xpath = "//div[@class='features_items']/h2")

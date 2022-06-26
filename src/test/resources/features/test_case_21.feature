@@ -1,7 +1,7 @@
 @test_case_21
 Feature: TC_21:Add review on product
 
-  Scenario: TC_20:Add review on product
+  Scenario: TC_21:Add review on product
     Given user launches browser
     And navigate to url
     When click on Products button

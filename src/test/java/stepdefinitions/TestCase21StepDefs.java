@@ -26,6 +26,7 @@ public class TestCase21StepDefs {
         Driver.scrollIntoView(productDetailsPage.writeYourReviewLink);
         Assert.assertTrue(productDetailsPage.writeYourReviewLink.isDisplayed());
         //Driver.clickPageDown();
+
     }
     @When("review name, email and review text on product details page")
     public void review_name_email_and_review_text_on_product_details_page() {

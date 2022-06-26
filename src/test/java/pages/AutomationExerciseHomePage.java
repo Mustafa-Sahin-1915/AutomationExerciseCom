@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import testdata.ContextDataMap;
 import utilities.Driver;
 
 import java.util.List;
@@ -12,6 +13,12 @@ public class AutomationExerciseHomePage extends AutomationExerciseBasePage{
 
         PageFactory.initElements(Driver.getDriver(),this);
     }
+
+    public AutomationExerciseHomePage(ContextDataMap contextData) {
+        super(contextData);
+        PageFactory.initElements(Driver.getDriver(), this);
+    }
+
     @FindBy(xpath = "//a[@href='/products']")
     public WebElement productsLink;
 
@@ -92,6 +99,20 @@ public class AutomationExerciseHomePage extends AutomationExerciseBasePage{
     @FindBy(xpath = "//div[@class='brands_products']//a")
     public List<WebElement> brandsAlinks;
 
+
+    @FindBy(xpath = "(//div[@id='recommended-item-carousel']//a)[1]")
+    public WebElement firstRecommendedItemAddBtn;
+
+    @FindBy(xpath = "//div[@id='recommended-item-carousel']//a")
+    public List<WebElement> RecommendedItemAddBtns;
+
+    @FindBy(xpath = "//div[@id='recommended-item-carousel']//p")
+    public List<WebElement> RecommendedItemNames;
+
+    @FindBy(xpath = "(//div[@id='recommended-item-carousel']//p)[1]")
+    public WebElement firstRecommendedItemCode;
+
+
     public WebElement getCategoryByVisibleName(String categoryName){
         for(WebElement w:accordionAlinks){
             if (w.isDisplayed() && w.getText().equalsIgnoreCase(categoryName)){
@@ -110,4 +131,7 @@ public class AutomationExerciseHomePage extends AutomationExerciseBasePage{
         }
         return null;
     }
+
+
+
 }

@@ -1,66 +1,71 @@
 package pages;
 
+import testdata.ContextDataMap;
+
 import java.util.HashMap;
 
 public class AutomationExercisePageFactory {
     private static HashMap<String, AutomationExerciseBasePage> pages = new HashMap<>();
-
+    private static ContextDataMap contextDataMap = new ContextDataMap();
     public static AutomationExerciseBasePage getPage(AutomationExercisePagesEnum page) {
+        if (contextDataMap==null){
+            contextDataMap = new ContextDataMap();
+        }
         AutomationExerciseBasePage pageV = null;
         switch (page) {
             case BasePage:
-                pageV = new AutomationExerciseBasePage();
+                pageV = new AutomationExerciseBasePage(contextDataMap);
                 break;
             case LoginPage:
-                pageV = new AutomationExerciseLoginPage();
+                pageV = new AutomationExerciseLoginPage(contextDataMap);
                 break;
             case HomePage:
-                pageV = new AutomationExerciseHomePage();
+                pageV = new AutomationExerciseHomePage(contextDataMap);
                 break;
             case PaymentPage:
-                pageV = new AutomationExercisePaymentPage();
+                pageV = new AutomationExercisePaymentPage(contextDataMap);
                 break;
             case PaymentDone:
-                pageV = new AutomationExercisePaymentDonePage();
+                pageV = new AutomationExercisePaymentDonePage(contextDataMap);
                 break;
             case ProductsPage:
-                pageV = new AutomationExerciseProductsPage();
+                pageV = new AutomationExerciseProductsPage(contextDataMap);
                 break;
             case CheckOutPage:
-                pageV = new AutomationExerciseCheckOutPage();
+                pageV = new AutomationExerciseCheckOutPage(contextDataMap);
                 break;
             case ContactUsPage:
-                pageV = new AutomationExerciseContactUsPage();
+                pageV = new AutomationExerciseContactUsPage(contextDataMap);
                 break;
             case ViewCartPage:
-                pageV = new AutomationExerciseViewCartPage();
+                pageV = new AutomationExerciseViewCartPage(contextDataMap);
                 break;
             case TestCasesPage:
-                pageV = new AutomationExerciseTestCasesPage();
+                pageV = new AutomationExerciseTestCasesPage(contextDataMap);
                 break;
             case AccountDeletePage:
-                pageV = new AutomationExerciseAccountDeletePage();
+                pageV = new AutomationExerciseAccountDeletePage(contextDataMap);
                 break;
             case AccountCreatedPage:
-                pageV = new AutomationExerciseAccountCreatedPage();
+                pageV = new AutomationExerciseAccountCreatedPage(contextDataMap);
                 break;
             case ProductDetailsPage:
-                pageV = new AutomationExerciseProductDetailsPage();
+                pageV = new AutomationExerciseProductDetailsPage(contextDataMap);
                 break;
             case ContactUsSuccessPage:
-                pageV = new AutomationExerciseContactUsSuccessPage();
+                pageV = new AutomationExerciseContactUsSuccessPage(contextDataMap);
                 break;
             case EnterAccountInfoPage:
-                pageV = new AutomationExerciseEnterAccountInfoPage();
+                pageV = new AutomationExerciseEnterAccountInfoPage(contextDataMap);
                 break;
             case SearchedProductsPage:
-                pageV = new AutomationExerciseSearchedProductsPage();
+                pageV = new AutomationExerciseSearchedProductsPage(contextDataMap);
                 break;
             case CategoryProductsPage:
-                pageV = new AutomationExerciseCategoryProductsPage();
+                pageV = new AutomationExerciseCategoryProductsPage(contextDataMap);
                 break;
             case BrandProductsPage:
-                pageV = new AutomationExerciseBrandProductsPage();
+                pageV = new AutomationExerciseBrandProductsPage(contextDataMap);
                 break;
             default:
                 pageV = null;

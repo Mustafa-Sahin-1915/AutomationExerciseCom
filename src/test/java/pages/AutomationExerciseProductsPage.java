@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import testdata.ContextDataMap;
 import utilities.Driver;
 
 import java.util.List;
@@ -12,6 +13,12 @@ public class AutomationExerciseProductsPage extends AutomationExerciseBasePage{
     public AutomationExerciseProductsPage() {
         PageFactory.initElements(Driver.getDriver(),this);
     }
+
+    public AutomationExerciseProductsPage(ContextDataMap contextData) {
+        super(contextData);
+        PageFactory.initElements(Driver.getDriver(), this);
+    }
+
     @FindBy(xpath = "//h2[contains(text(),'All Products')]")
     public WebElement allProductsH2;
 
