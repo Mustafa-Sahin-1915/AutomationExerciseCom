@@ -11,7 +11,7 @@ public enum AutomationExercisePagesEnum {
     EnterAccountInfoPage("EnterAccountInfoPage"),
     HomePage("HomePage"),
     LoginPage("LoginPage"),
-    PaymentDone("PaymentDone"),
+    PaymentDonePage("PaymentDone"),
     PaymentPage("PaymentPage"),
     ProductDetailsPage("ProductDetailsPage"),
     ProductsPage("ProductsPage"),

@@ -42,4 +42,5 @@ public class AutomationExercisePaymentPage extends AutomationExerciseBasePage{
     public WebElement successfullyOrderedMessage;
 
 
+
 }

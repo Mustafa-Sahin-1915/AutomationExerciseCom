@@ -20,7 +20,7 @@ public class AutomationExercisePaymentDonePage extends AutomationExerciseBasePag
     @FindBy(xpath = "//h2[@data-qa='order-placed']")
     public WebElement orderPlacedH2;
 
-    @FindBy(xpath = "//a[contains(@href,'/download_invoice')]")
+    @FindBy(xpath = "//a[@class='btn btn-default check_out']")
     public WebElement downloadInvoiceBtn;
 
     @FindBy(xpath = "//a[@data-qa='continue-button']")

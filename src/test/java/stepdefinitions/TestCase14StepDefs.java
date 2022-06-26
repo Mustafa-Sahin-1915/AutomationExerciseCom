@@ -130,14 +130,14 @@ public class TestCase14StepDefs {
     @Then("verify that Order Placed! is visible")
     public void verify_that_order_placed_is_visible() {
         paymentDonePage = (AutomationExercisePaymentDonePage) AutomationExercisePageFactory.
-                getPage(AutomationExercisePagesEnum.PaymentDone);
+                getPage(AutomationExercisePagesEnum.PaymentDonePage);
         Assert.assertTrue(paymentDonePage.orderPlacedH2.isDisplayed());
 
     }
     @Then("click on Continue on payment done page")
     public void click_on_continue_on_payment_done_page() {
         paymentDonePage = (AutomationExercisePaymentDonePage) AutomationExercisePageFactory.
-                getPage(AutomationExercisePagesEnum.PaymentDone);
+                getPage(AutomationExercisePagesEnum.PaymentDonePage);
         paymentDonePage.continueBtn.click();
     }
     /*

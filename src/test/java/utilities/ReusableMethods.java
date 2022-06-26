@@ -184,7 +184,32 @@ public class ReusableMethods {
         return select.getFirstSelectedOption();
     }
 
+    public static boolean waitForFileDownloaded(String filePath, int timeout){
+        try {
+            System.out.println("Waiting for "+filePath+" to download...");
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
+            Boolean result = wait.until(filePresent(filePath));
+            return result;
+        } catch (Throwable error) {
+            System.out.println(
+                    "Timeout waiting for file:"+filePath+" downloaded for " + timeout + " seconds");
+        }
+        return false;
+    }
+    private static ExpectedCondition<Boolean> filePresent(String filePath) {
+        return new ExpectedCondition<Boolean>() {
+            @Override
+            public Boolean apply(WebDriver driver) {
+                File f = new File(filePath);
+                return f.exists();
+            }
+            @Override
+            public String toString() {
+                return String.format("file to be present within the time specified");
+            }
+        };
 
+    }
 
 
 }

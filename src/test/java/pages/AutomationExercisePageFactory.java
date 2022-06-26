@@ -25,7 +25,7 @@ public class AutomationExercisePageFactory {
             case PaymentPage:
                 pageV = new AutomationExercisePaymentPage(contextDataMap);
                 break;
-            case PaymentDone:
+            case PaymentDonePage:
                 pageV = new AutomationExercisePaymentDonePage(contextDataMap);
                 break;
             case ProductsPage:
