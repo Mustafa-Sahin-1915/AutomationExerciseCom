@@ -39,11 +39,6 @@ public class ApiUtils {
         String str = "{\"password\":\"%s\",\"rememberMe\":true,\"username\":\"%s\"}";
         String requestBody = String.format(str,passwordApi,userNameApi);
 
-//        Response response1 = given()
-//                .spec(spec)
-//                .body(requestBody)
-//                .post("/{first}");
-
         Response response1 = given()
                 .spec(spec1)
                 .body(requestBody)
@@ -52,6 +47,7 @@ public class ApiUtils {
         response1.prettyPrint();
         JsonPath jsonPath = response1.jsonPath();
         String token = jsonPath.getString("id_token");
+        setResponse(response1);
         return token;
     }
     private static RequestSpecification setUpSpec(){

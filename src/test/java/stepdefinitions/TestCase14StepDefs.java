@@ -120,10 +120,10 @@ public class TestCase14StepDefs {
     }
     @Then("verify success message Your order has been placed successfully")
     public void verify_success_message_your_order_has_been_placed_successfully() {
-        //Driver.waitForVisibility(paymentPage.successfullyOrderedMessage,5);
-        // There is a problem about that step
-        //WebElement successMsg =
-         //       Driver.waitForVisibility(paymentPage.successfullyOrderedMessage, 5);
+       //Driver.waitForVisibility(paymentPage.successfullyOrderedMessage,5);
+       // There is a problem about that step
+       //WebElement successMsg =
+       //  Driver.waitForVisibility(paymentPage.successfullyOrderedMessage, 5);
        // Assert.assertTrue(successMsg.isDisplayed());
 
     }
